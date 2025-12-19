@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    overflow-x: hidden;
+    font-family: 'Dancing Script', cursive;
+}
+
+/* =========================
+   FONDO AZUL NAVIDEÑO
+========================= */
+body {
+    background: linear-gradient(180deg, #081a2b, #0f3d66, #3f87c5);
+    position: relative;
+}
+
+/* =========================
+   CIELO ESTRELLADO
+========================= */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(rgba(173,216,230,.7) 1px, transparent 1px);
+    background-size: 120px 120px, 220px 220px;
+    animation: estrellas 35s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes estrellas {
+    to { transform: translateY(400px); }
+}
+
+/* =========================
+   TÍTULO SUPERIOR
+========================= */
+.feliz-navidad {
+    text-align: center;
+    color: white;
+    font-size: 70px;
+    margin: 40px 0 20px;
+    text-shadow: 0 0 15px rgba(255,255,255,.6);
+    position: relative;
+    z-index: 2;
+}
+
+/* =========================
+   NIEVE
+========================= */
+.snow::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(white 3px, transparent 3px),
+        radial-gradient(white 1.5px, transparent 1.5px),
+        radial-gradient(white 2px, transparent 2px);
+    background-size: 80px 80px, 120px 120px, 60px 60px;
+    animation: snow 18s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes snow {
+    to { background-position: 0 900px, 0 1400px, 0 1100px; }
+}
+
+/* =========================
+   BRILLOS
+========================= */
+.sparkles::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(rgba(255,255,255,.8) 1px, transparent 1px),
+      radial-gradient(rgba(173,216,230,.6) 1px, transparent 1px);
+    background-size: 160px 160px, 220px 220px;
+    animation: sparkle 6s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes sparkle {
+    from { opacity: .4; }
+    to { opacity: .8; }
+}
+
+/* =========================
+   CONTENEDOR
+========================= */
+.contenedor {
+    position: relative;
+    z-index: 4;
+    text-align: center;
+    padding-top: -180px;
+}
+
+/* =========================
+   SOBRE
+========================= */
+.sobre {
+    position: relative;
+    width: 300px;
+    height: 190px;
+    margin: auto;
+    cursor: pointer;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.cuerpo {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 130px;
+    background: #d7ecff; /* azul pastel */
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    z-index: 1;
+}
+
+.tapa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-bottom: 95px solid #bcdcff; /* azul pastel más fuerte */
+    transform-origin: top;
+    transform: rotateX(0deg);
+    transition: transform 0.9s ease;
+    z-index: 3;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15));
+}
+
+.click {
+    position: absolute;
+    width: 100%;
+    bottom: -40px;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 10px rgba(255,255,255,0.7);
+}
+
+.sobre.abierto .tapa {
+    transform: rotateX(180deg);
+}
+
+.sobre.abierto {
+    opacity: 0;
+    transform: translateY(-40px);
+    pointer-events: none;
+    transition: .8s;
+}
+
+/* =========================
+   CARTA (ESTILO HOJA LIMPIA)
+========================= */
+.carta {
+    width: 20cm;
+    max-width: 90%;
+    background: #fffdf8;
+    margin: -200px auto 40px;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 0 25px 60px rgba(0,0,0,.25);
+    opacity: 0;
+    transform: translateY(0px);
+    transition: .9s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.carta.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+   TEXTO
+========================= */
+.titulo {
+    font-size: 36px;
+    color: #1c4e80;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+#texto {
+    font-size: 30px;
+    line-height: 1.9;
+    color: #2b3a4a;
+    text-align: center;
+    white-space: pre-line;
+}
+
+.firma {
+    display: block;
+    margin-top: 30px;
+    text-align: right;
+    font-size: 20px;
+    font-weight: bold;
+    color: #1c4e80;
+}
+
+/* =========================
+   DECORACIONES LATERALES
+========================= */
+.decoracion-lateral {
+    position: absolute;
+    top: 60px;
+    bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: .85;
+}
+
+.decoracion-izq { left: 15px; }
+.decoracion-der { right: 15px; }
+
+.decoracion-lateral span {
+    font-size: 30px;   /* 🔥 aquí crecen los emojis */
+    line-height: 1;
+}
+
+/* =========================
+   CORAZONES
+========================= */
+.hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    bottom: -20px;
+    animation: flotar 6s linear forwards;
+}
+
+@keyframes flotar {
+    to { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* =========================
+   BOTÓN MÚSICA
+========================= */
+.music-btn {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #7bbcea, #a6d3ff);
+    color: #1c4e80;
+    padding: 14px 28px;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    cursor: pointer;
+    z-index: 5;
+    animation: flotarBtn 2s ease-in-out infinite;
+}
+
+@keyframes flotarBtn {
+    0% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-6px); }
+    100% { transform: translateX(-50%) translateY(0); }
+}
+
+/* =========================
+   MÓVIL
+========================= */
+@media (max-width: 480px) {
+    .titulo { font-size: 28px; }
+    #texto { font-size: 18px; }
+    .carta { padding: 40px 25px; }
+}
