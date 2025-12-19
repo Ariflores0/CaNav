@@ -42,7 +42,7 @@ body::before {
 .feliz-navidad {
     text-align: center;
     color: white;
-    font-size: 70px;
+    font-size: 50px;
     margin: 40px 0 20px;
     text-shadow: 0 0 15px rgba(255,255,255,.6);
     position: relative;
@@ -286,3 +286,4 @@ body::before {
     #texto { font-size: 18px; }
     .carta { padding: 40px 25px; }
 }
+
